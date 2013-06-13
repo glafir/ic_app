@@ -1,0 +1,19 @@
+%table.pretty
+  %tr
+    %th= sortable "country_name"+"&search=&utf8=✓"
+    %th= sortable "country_iata_code"
+    %th= sortable "country_icao_code"
+    %th= sortable "country_number"
+    %th
+    %th
+    %th
+
+  - @countries.each do |country|
+    %tr
+      %td= link_to country.country_name, country
+      %td= country.country_iata_code
+      %td= country.country_icao_code
+      %td= country.country_number
+      %td= link_to 'Show', country
+      %td= link_to 'Edit', edit_country_path(country)
+      %td= link_to 'Destroy', country, :method => :delete, :data => { :confirm => 'Are you sure?' }

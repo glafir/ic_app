@@ -1,0 +1,22 @@
+= form_for @town do |f|
+  -if @town.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@town.errors.count, "error")} Чтобы сохранить:"
+      %ul
+        - @town.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :pop
+    = f.number_field :pop
+  .field
+    = f.label :date_found
+    = f.number_field :date_found
+  .field
+    = f.label :area
+    = f.number_field :area
+  .actions
+    = f.submit 'Сохранить'

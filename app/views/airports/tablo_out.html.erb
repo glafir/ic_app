@@ -1,0 +1,37 @@
+<h1>Listing timetableaps</h1>
+<%=Time.zone_default%>
+<%=Time.now%>
+<%= will_paginate @timetableaps%>
+<table>
+  <tr>
+    <th>Рейс</th>
+    <th>Направление</th>
+    <th>Время вылета</th>
+    <th>Gate</th>
+    <th>Статус</th>
+	<th></th>
+  </tr>
+<%@timetableaps.each do |timetableap| %>
+  <tr>
+    <td nowrap
+><%= timetableap.aircompany.IATA_code %> <%= timetableap.Flight_Number %></td>
+    <td nowrap>
+		<%= timetableap.rus %>
+		</td>
+	<td nowrap>
+	<%tz = TZInfo::Timezone.get('Etc/GMT__m__11')%>
+	<%= tz.utc_to_local(timetableap.TimeStart).strftime("%H:%M") %></td>
+	<td>
+	<%if timetableap.TimeStart.hour < 13%>
+	<%timeStart = timetableap.TimeStart.change(:year=>Time.now.year, :month=>Time.now.month, :day=>Time.now.day)%><%else%>
+	<%timeStart = timetableap.TimeStart.change(:year=>Time.now.year, :month=>Time.now.month, :day=>(Time.now - 1.day).day)%><%end%>
+	<%if timeStart < Time.now%>Вылетел<%end%>
+	</td>
+    <td nowrap><%= link_to 'Информация о рейсе', timetableap %></td>
+  </tr>
+<% end %>
+</table>
+<%= will_paginate @timetableaps%>
+<br />
+
+<%= link_to 'New Timetableap', new_timetableap_path %>

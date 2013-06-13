@@ -1,0 +1,133 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Iata code:</b>
+  <%= @airport.iata_code %>
+</p>
+
+<p>
+  <b>Icao code:</b>
+  <%= @airport.icao_code %>
+</p>
+
+<p>
+  <b>Name rus:</b>
+  <%= @airport.name_rus %>
+</p>
+
+<p>
+  <b>Name eng:</b>
+  <%= @airport.name_eng %>
+</p>
+
+<p>
+  <b>City rus:</b>
+  <%= @airport.city_rus %>
+</p>
+
+<p>
+  <b>City eng:</b>
+  <%= @airport.city_eng %>
+</p>
+
+<p>
+  <b>Gmt offset:</b>
+  <%= @airport.gmt_offset %>
+</p>
+
+<p>
+  <b>Iso code:</b>
+  <%= @airport.iso_code %>
+</p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @airport.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @airport.longitude %>
+</p>
+
+<p>
+  <b>Runway length:</b>
+  <%= @airport.runway_length %>
+</p>
+
+<p>
+  <b>Runway elevation:</b>
+  <%= @airport.runway_elevation %>
+</p>
+
+<p>
+  <b>Runnway coll:</b>
+  <%= @airport.runnway_coll %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @airport.phone %>
+</p>
+
+<p>
+  <b>Fax:</b>
+  <%= @airport.fax %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @airport.email %>
+</p>
+
+<p>
+  <b>Website:</b>
+  <%= @airport.website %>
+</p>
+
+<p>
+  <b>Terminalscoll:</b>
+  <%= @airport.TerminalsColl %>
+</p>
+
+<p>
+  <b>Terminals:</b>
+  <%= @airport.Terminals %>
+</p>
+
+<p>
+  <b>Dist to town:</b>
+  <%= @airport.Dist_to_town %>
+</p>
+<br />
+<%= link_to 'Edit', edit_airport_path(@airport), :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %> |
+<%= link_to 'close', "#", :onclick =>"return hs.close(this)" %>
+
+<h2>Aircompanies in <%= @airport.name_rus%> airport</h2>
+
+<table>
+  <tr>
+	<td>ID</td>
+    <td>Iata code</td>
+    <td>Icao code</td>
+    <td>Name rus</td>
+    <td>Name eng</td>
+    <td></td>
+    <td></td>
+    <td></td>
+  </tr>
+<% @airlines.each do |aircompany| %>
+  <tr>
+    <td><%= aircompany.id %></td>
+    <td><%= aircompany.IATA_code %></td>
+    <td><%= aircompany.ICAO_code %></td>
+    <td><%= link_to aircompany.Airline_name_rus, aircompany, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" %></td>>
+    <td><%= link_to aircompany.Airline_name_eng, aircompany, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" %></td>
+    <td></td>
+    <td><%= link_to 'Edit', edit_aircompany_path(aircompany), :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %></td>
+    <td><%= link_to 'Destroy', aircompany, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <% end %>
+</table>
+
+

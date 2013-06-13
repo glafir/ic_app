@@ -1,0 +1,16 @@
+﻿%h1 Listing countries
+
+
+= form_tag countries_path, :method => 'get', :id => "countries_search" do
+  %p
+    = text_field_tag :search, params[:search]
+    = submit_tag "Search", :name => nil
+.countries_search_hidden_fields
+  =render 'countries_search_hidden_fields'
+= will_paginate @countries
+.countries
+  =render 'countries'
+= will_paginate @countries
+%br
+
+= link_to 'New Country', new_country_path

@@ -1,0 +1,344 @@
+/*
+ * Reset
+ */ 
+*{
+  margin: 0;
+  padding: 0;
+
+}
+body{
+  font-family:Tahoma;
+  font-weight:bold;
+  background-color:#500;
+  color:#FFF;
+}
+a{
+  color: #ffffaa; /* Цвет ссылок */
+  padding: 2px; /* Поля вокруг текста */ 
+}
+a:hover{
+  background: #e00; /* Цвет фона под ссылкой */ 
+  color: #ffe; /* Цвет ссылки */ 
+}
+/*
+a:visited{ 
+  color: #999; 
+  }
+a:visited:after{
+  content: "\00A0\221A";
+  font-size: 75%;
+}
+*/
+.brd a{
+    display: block; /* Ссылка как блочный элемент */
+    padding: 2px; /* Поля вокруг надписи */
+    text-decoration: none; /* Подчеркивание у ссылок убираем */
+    color: #ffa; /* Цвет текста */
+    border: 1px solid #ccc;/* Рамка вокруг пунктов меню */
+    
+	border-bottom: none; /* Границу снизу не проводим */
+	
+}
+.brd a:visited{ 
+  color: #999; /* Цвет ссылки */
+}
+.brd{
+background-color: #600;
+color:#ffc;
+}
+
+.brd:hover{
+    color: #ff5; /* Цвет текста активного пункта */
+    font-size:140%;
+    background-color: #000; /* Цвет фона активного пункта */
+    border-bottom: 2px solid #ff1; /* Линия снизу */
+   }
+#Header{
+  clear:both;
+  float:left;
+  width:100%;
+  border-bottom:2px solid gray;
+  margin: 0 0 5px 0;
+}
+#MainMenu{
+  margin:20px 100px 5px 100px;
+  text-align:center;
+}
+#HorMenu{
+  margin:1px;
+}
+#Footer{
+  position:relative;
+  clear:both;
+  float:left;
+  width:100%;
+  height: 70px;
+  border-top:2px solid gray;
+  text-align: center;
+}
+legend{
+  color:#0FF;
+  margin-left:30px;
+}
+fieldset{
+  border: 2px solid gray;
+}
+p{
+  margin: 5px;
+}
+/*
+  Стили влияющие на отображение
+*/
+
+div.Zones{
+  background-color:#000;
+  width:100%;
+}
+form#UserInfoForm .formLine{
+  margin:10px;
+}
+form#Users {
+  overflow: hidden; /* обрезаем выступы за форму (в частности в ие6 неправильно расчитанный width для div) */
+  padding: 2px; /* небольшой отступ чтобы не обрезалась подсветка input в фокусе в Safari и Chrome */
+  text-align:center;
+}
+form#Users label {
+  float: left; /* делаем метки плавающими и фиксированной ширины чтобы выровнять их по одному уровню */
+  width: 345px;
+  text-align: right;
+  position: relative; /* выравниваем тексты меток и полей по одному уровню */
+  top: 2px; /* отступ сверху подбираем в зависимости от размера шрифта и дизайна полей */
+  margin-right: 10px; /* чтобы к меткам не прилипали поля */
+}
+form#Users .formLine {
+  float: left; /* чтобы не было проблем с отступами между блоками */
+  width: 100%; /* чтобы блоки не встраивались в одну строку */
+  margin-bottom: 5px; /* расстояние между блоками */
+}
+form.Auth {
+  width: 230px; /* задаем ширину формы, чтобы сработал overflow */
+  overflow: hidden; /* обрезаем выступы за форму (в частности в ие6 неправильно расчитанный width для div) */
+  padding: 2px; /* небольшой отступ чтобы не обрезалась подсветка input в фокусе в Safari и Chrome */
+  display: none;
+  border-radius: 20px;
+  box-shadow: 0 0 50px 3px white;
+
+}
+form.Auth .formLine {
+	float: left; /* чтобы не было проблем с отступами между блоками */
+	width: 100%; /* чтобы блоки не встраивались в одну строку */
+	margin-bottom: 20px; /* расстояние между блоками */
+
+}
+form.Auth #formHeader {
+  text-align: center;
+}
+form.Auth label {
+	float: left; /* делаем метки плавающими и фиксированной ширины чтобы выровнять их по одному уровню */
+	width: 80px;
+	text-align: right;
+	position: relative; /* выравниваем тексты меток и полей по одному уровню */
+	top: 2px; /* отступ сверху подбираем в зависимости от размера шрифта и дизайна полей */
+	margin-right: 10px; /* чтобы к меткам не прилипали поля */
+}
+form.Auth input[type=text], form.Auth input[type=password] {/* оформление для полей типа text и password */
+	width: 120px;
+	background: #fcc; /* обязательно указываем цвет фона (или ставим его none), т.к. в браузере могут быть свои значения по умолчанию */
+	border: 1px solid #7f9db9; /* цвет бордюра */
+	height: 30px; /* явно задаем высоту, для кроссбраузерности */
+	box-shadow: 0 0 5px 3px white ;/* Тени вокруг бокса.*/
+	border-radius: 10px;/* Скругление уголков.*/
+}
+form.Auth input[type=submit] {/* оформление для кнопки submit */
+	margin-left: 100px;
+	text-align:center;
+	cursor: pointer; /* меняем указатель для кнопки */
+  background-color:#700;
+  box-shadow: 0 0 5px 3px red;
+  border:1px solid red;
+  color:#FFF;
+  border-radius: 15px ;/* Скругление уголков.*/
+}
+/* column container */
+.colmask {
+  position:relative;    /* This fixes the IE7 overflow hidden bug and stops the layout jumping out of place */
+  clear:both;
+  float:left;
+  width:100%;     /* width of whole page */
+  overflow:hidden;  /* This chops off any overhanging divs */
+}
+/* 2 column left menu settings */
+.leftmenu .colright {
+  position:relative;
+  float:left;
+  width:200%;
+  left:200px;
+
+}
+.leftmenu .col1wrap {
+  float:right;
+  width:50%;
+  position:relative;
+  right:200px;
+  padding-bottom:1em;
+}
+.leftmenu .col1 {
+  width: 610px; 
+  position:relative;
+  right: 100%;
+  margin:10px 10px 50px 215px;
+}
+.leftmenu .col2 {
+  float:left;
+  width:190px;
+  height:400px;
+  position:relative;
+  right:0px;
+  left: -180px;
+  top: 10px;
+}
+div#UserInfo label {
+  float: left; /* делаем метки плавающими и фиксированной ширины чтобы выровнять их по одному уровню */
+  width: 190px;
+  position: relative; /* выравниваем тексты меток и полей по одному уровню */
+  top: 2px; /* отступ сверху подбираем в зависимости от размера шрифта и дизайна полей */
+  margin-right: 10px; /* чтобы к меткам не прилипали поля */
+}
+fieldset#EditStudyInfo label{
+  float: left; /* делаем метки плавающими и фиксированной ширины чтобы выровнять их по одному уровню */
+  width: 220px;
+  position: relative; /* выравниваем тексты меток и полей по одному уровню */
+  top: 2px; /* отступ сверху подбираем в зависимости от размера шрифта и дизайна полей */
+  margin-right: 10px; /* чтобы к меткам не прилипали поля */
+}
+div.col1 .Field {
+ margin:5px 0 0 5px;
+}
+div.col1 .FieldComment {
+ margin-left:5px
+}
+div.SeensJornal label {
+  float:left;
+  width:200px;
+}
+div.SubFormLine {
+  margin:2px 0 0 5px;
+}
+div.SubFormLineButtom {
+  margin:2px 0 5px 5px;
+}
+div.SubFormLine input {
+  margin: 2px 0 0 0;
+}
+div.SubFormLine select {
+  margin: 2px 0 0 0;
+}
+div.SubFormLine textarea {
+  margin: 2px 0 0 0;
+}
+fieldset#EvaluationInfo label {
+  float:     left;
+  width:     170px;
+  position:  relative;
+  top:       2px;
+	margin:    0 10px 0 0;
+}
+form#EvaluationForm div.formLine {
+	margin: 5px 5px 5px 10px;
+}
+fieldset#EvaluationAnswer {
+	margin-right:5px;
+}
+fieldset#EvaluationAnswer label {
+  float:none; 
+}
+form#EvaluationForm input[type=text] {
+	width: 262px;
+}
+form#EvaluationForm textarea {
+  width:  262px;
+	height: 35px;
+}
+form#EvaluationForm select {
+  width:  266px;
+}
+form#EvaluationForm div.formLineButtons {
+  text-align:center;
+	margin: 5px;
+}
+form#EvaluationForm #ButtonBack {
+	width:70px;
+}
+form#EvaluationForm #ButtonNext {
+  width:85px;
+}
+form#EvaluationForm div.formLineEx {
+  margin: 5px;
+}
+form#EvaluationForm div.formLineEx label {
+  float:  none;
+}
+.list {
+  width: 560px; 
+  height: 500px;
+  overflow: auto;
+}
+.info {
+  width: 560px; 
+  height: 500px;
+  overflow: auto;
+}
+.ttaircom {
+  width: 560px; 
+  height: 500px;
+  overflow: auto;
+}
+.aptt {
+  width: 540px; 
+  height: 500px;
+  overflow: auto;
+}
+.tabloin{
+  float:right;
+  width: 300px; 
+  height: 500px;
+  overflow: auto;
+  box-shadow: 0 0 5px 3px red;
+  border:1px solid red;
+  background: #300;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+}
+.tabloout {
+  float:left;
+  width: 300px; 
+  height: 500px;
+  overflow: auto;
+  box-shadow: 0 0 5px 3px red;
+  border:1px solid red;
+  border-radius: 10px;
+  background: #300;
+}
+.tabloout td{
+  border-bottom: 1px solid #800;
+}
+.tabloin td{
+  border-bottom: 1px solid #800;
+}
+table { 
+    width: 100%; /* Ширина таблицы */
+    border-spacing: 0; /* Расстояние между ячейками */
+   }
+.tbdata tr:nth-child(2n+1) {
+    background: #500000; /* Цвет фона */
+   }
+.tbdata  tr:nth-child(2n+2) {
+    background: #FF9999 ; /* Цвет фона */
+    color: #000; /* Цвет текста */
+   }
+.tbdata  tr:nth-child(2n+2) a{
+    color:#000099;
+   }
+.t_fnumber{
+	width:60px;
+}   

@@ -1,0 +1,31 @@
+%h1 Список regions
+
+%table
+  %tr
+    %th Name
+    %th Code
+    %th Area
+    %th Pop state
+    %th Capital state
+    %th
+    %th
+    %th
+
+  - @regions.each do |region|
+    %tr
+      %td= region.name
+      %td= region.code
+      %td= region.area
+      %td= region.pop_state
+      %td= region.capital_state
+      %td= link_to 'Открыть', region
+      %td= link_to 'Редактировать', edit_region_path(region)
+      %td= link_to 'Удалить', region, :confirm => 'Вы уверены?', :method => :delete
+
+%br
+
+= link_to 'Создать Region', new_region_path
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@region, :previous_label => '&#8592;', :next_label => '&#8594;')

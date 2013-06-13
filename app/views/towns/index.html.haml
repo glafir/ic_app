@@ -1,0 +1,29 @@
+%h1 Список towns
+
+%table
+  %tr
+    %th Name
+    %th Pop
+    %th Date found
+    %th Area
+    %th
+    %th
+    %th
+
+  - @towns.each do |town|
+    %tr
+      %td= town.name
+      %td= town.pop
+      %td= town.date_found
+      %td= town.area
+      %td= link_to 'Открыть', town
+      %td= link_to 'Редактировать', edit_town_path(town)
+      %td= link_to 'Удалить', town, :confirm => 'Вы уверены?', :method => :delete
+
+%br
+
+= link_to 'Создать Town', new_town_path
+
+%br
+%div{ :style => 'width: 10%; margin: 0px auto;' }
+  = will_paginate(@town, :previous_label => '&#8592;', :next_label => '&#8594;')

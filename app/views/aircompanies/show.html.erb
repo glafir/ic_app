@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Iata code:</b>
+  <%= @aircompany.IATA_code %>
+</p>
+
+<p>
+  <b>Icao code:</b>
+  <%= @aircompany.ICAO_code %>
+</p>
+
+<p>
+  <b>Awb prefix:</b>
+  <%= @aircompany.AWB_prefix %>
+</p>
+
+<p>
+  <b>Airline name eng:</b>
+  <%= @aircompany.Airline_name_eng %>
+</p>
+
+<p>
+  <b>Airline name rus:</b>
+  <%= @aircompany.Airline_name_rus %>
+</p>
+
+<p>
+  <b>Base airport:</b>
+  <%= @aircompany.airport_id %>
+</p>
+
+<p>
+  <b>Country:</b>
+  <%= @aircompany.Country %>
+</p>
+
+<p>
+  <b>Ap hubs:</b>
+  <%= @aircompany.AP_hubs %>
+</p>
+
+
+<%= link_to 'Edit', edit_aircompany_path(@aircompany), :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %> |
+<%= link_to 'close', "#", :onclick =>"return hs.close(this)" %>

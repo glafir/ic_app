@@ -1,0 +1,36 @@
+<%= will_paginate %>
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Label</th>
+	<th>IATA code</th>
+	<th>ICAO code</th>
+	<th>Airline name eng</th>
+    <th>Airline name rus</th>
+    <th>Base airport</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<br />
+<% @aircompanies.each do |aircompany| %>
+  <tr>
+    <td><%= aircompany.id %></td>
+    <td>
+	<a href="/aircompanies/<%= aircompany.id %>" onclick ="return hs.htmlExpand(this, { objectType: 'ajax'} )"><img src="/images/air_tm/<%= aircompany.IATA_code %>.png" style="width: 80px;" /></a></td>
+	<td><%= aircompany.IATA_code %></td>
+    <td><%= aircompany.ICAO_code %></td>
+    <td><%= link_to aircompany.Airline_name_eng, aircompany, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" %></td>
+    <td><%= link_to aircompany.Airline_name_rus, aircompany, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" %></td>
+    <td><%= link_to aircompany.airport.name_rus, aircompany.airport, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" %>
+	(г.<%=link_to aircompany.airport.city_rus, :controller=>"airports", :action => "city", :city_eng => aircompany.airport.city_eng%>)</td>
+    <td><%= link_to 'Edit', edit_aircompany_path(aircompany), :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %></td>
+    <td><%= link_to 'Destroy', aircompany, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+<br />
+<%= will_paginate %>
+<br />
+
+<%= link_to 'New Aircompany', new_aircompany_path, :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %>

@@ -1,0 +1,98 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('a.demo1').contextMenu('myMenu1', {
+        bindings: {
+          'open': function(t) {
+			hs.htmlExpand(this, { objectType: 'ajax'} ).window.location='/airports/'+t.id;
+	},
+
+          'edit': function(t) {
+
+            alert('Trigger was '+t.id+'\nAction was Email');
+
+          },
+
+          'delete': function(t) {
+
+            alert('Trigger was '+t.id+'\nAction was Save');
+
+          },
+
+          'exit': function(t) {
+
+            alert('Trigger was '+t.id+'\nAction was Delete');
+
+          }
+
+        }
+
+      });
+
+    }); 
+</script>
+ <div class="contextMenu" id="myMenu1">
+
+      <ul>
+
+        <li id="open"><img src="/images/cm/door.png" /> Просмотреть аэропорт</li>
+
+        <li id="edit"><img src="/images/cm/page_white_edit.png" /> Редактировать аэропорт</li>
+
+        <li id="delete"><img src="/images/cm/page_white_delete.png" /> УДАЛИТЬ аэропорт</li>
+
+        <li id="exit"><img src="/images/cm/cross.png" /> Выход</li>
+
+      </ul>
+
+    </div>
+
+
+<h1>Listing airports</h1>
+
+<%= will_paginate @airports%>
+<table>
+  <tr>
+	<th><%= sortable "id"%></th>
+    <th><%= sortable "iata_code"%></th>
+    <th><%= sortable "icao_code"%></th>
+    <th><%= sortable "name_rus"%></th>
+    <th><%= sortable "city_rus"%></th>
+    <th>Расписание и табло.</th>
+	<th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @airports.each do |airport| %>
+  <tr>
+  
+	<td><%= airport.id %></td>
+    
+	<td><%= airport.iata_code %></td>
+    
+	<td><%= airport.icao_code %></td>
+    
+	<td><%= link_to airport.name_rus, airport, :onclick => "return hs.htmlExpand(this, { objectType: 'ajax'} )" , :class => "demo1", :id => airport.id.to_s%></td>
+    
+	<td><%= link_to airport.city_rus, :controller=>"airports", :action => "city", :city_eng => airport.city_eng%></td>
+	
+	<td nowrap><a href>Расписание</a> || <a href="/airports/<%= airport.id%>/tablo_out/"  onclick = "return hs.htmlExpand(this, { objectType: 'iframe'} )">Вылет</a>:<a href="/airports/<%= airport.id%>/tablo_in/"  onclick = "return hs.htmlExpand(this, { objectType: 'iframe'} )">Прибытие</a>
+	</td>
+    
+	<td><%= link_to 'Edit', edit_airport_path(airport), :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %></td>
+    
+	<td><%= link_to 'Destroy', airport, method: :delete, data: { confirm: "Вы уверены, что хотите удалить аэропорт "+airport.name_rus+" в городе "+ airport.city_rus} %></td>
+  </tr>
+<% end %>
+</table>
+<div class="highslide-caption">
+	
+</div>
+
+<br />
+<%= page_entries_info @airports%>
+<%= will_paginate @airports%>
+<br />
+
+<br />
+<%= link_to 'New Airport', new_airport_path, :onclick => "return hs.htmlExpand(this, { objectType: 'iframe'} )" %>

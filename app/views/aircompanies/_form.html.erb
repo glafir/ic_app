@@ -1,0 +1,50 @@
+  <%= form_for(@aircompany) do |f| %>
+  <% if @aircompany.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@aircompany.errors.count, "error") %> prohibited this aircompany from being saved:</h2>
+
+      <ul>
+      <% @aircompany.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :IATA_code %><br />
+    <%= f.text_field :IATA_code %>
+  </div>
+  <div class="field">
+    <%= f.label :ICAO_code %><br />
+    <%= f.text_field :ICAO_code %>
+  </div>
+  <div class="field">
+    <%= f.label :AWB_prefix %><br />
+    <%= f.text_field :AWB_prefix %>
+  </div>
+  <div class="field">
+    <%= f.label :Airline_name_eng %><br />
+    <%= f.text_field :Airline_name_eng %>
+  </div>
+  <div class="field">
+    <%= f.label :Airline_name_rus %><br />
+    <%= f.text_field :Airline_name_rus %>
+  </div>
+  <div class="field">
+    
+    <%= f.label :Base_airport %><br />
+	<%= f.select :airport_id, Airport.where(iso_code: 'EZ').collect{|item| [item.name_rus, item.id]} %>
+  </div>
+  <div class="field">
+    <%= f.label :Country %><br />
+    <%= f.text_field :Country, :value => 'EZ' %>
+  </div>
+  <div class="field">
+    <%= f.label :AP_hubs %><br />
+    <%= f.text_field :AP_hubs %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

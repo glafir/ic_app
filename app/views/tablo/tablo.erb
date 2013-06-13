@@ -1,0 +1,33 @@
+<h1>Listing timetableaps</h1>
+
+<table>
+  <tr>
+    <th>Flight number</th>
+    <th>Направление</th>
+    <th>Время вылета</th>
+    <th>Dateofstartnav</th>
+    <th>Dateofendnav</th>
+
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+<% @timetableaps.each do |timetableap| %>
+  <tr>
+    <td><%= timetableap.aircompany.IATA_code %> <%= timetableap.Flight_Number %></td>
+    <td><%= timetableap.airport.city_rus %></td>
+	<td><%= timetableap.TimeStart.stamp("%H:%M") %></td>
+    
+    <td><%= timetableap.DateOfStartNav %></td>
+    <td><%= timetableap.DateOfEndNav %></td>
+
+    <td><%= link_to 'Show', timetableap %></td>
+    <td><%= link_to 'Edit', edit_timetableap_path(timetableap) %></td>
+    <td><%= link_to 'Destroy', timetableap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Timetableap', new_timetableap_path %>

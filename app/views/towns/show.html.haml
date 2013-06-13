@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @town.name
+%p
+  %b Pop:
+  = @town.pop
+%p
+  %b Date found:
+  = @town.date_found
+%p
+  %b Area:
+  = @town.area
+
+= link_to 'Редактировать', edit_town_path(@town)
+\|
+= link_to 'Назад', towns_path

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @region.name
+%p
+  %b Code:
+  = @region.code
+%p
+  %b Area:
+  = @region.area
+%p
+  %b Pop state:
+  = @region.pop_state
+%p
+  %b Capital state:
+  = @region.capital_state
+
+= link_to 'Редактировать', edit_region_path(@region)
+\|
+= link_to 'Назад', regions_path

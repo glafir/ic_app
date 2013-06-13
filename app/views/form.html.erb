@@ -1,0 +1,42 @@
+﻿
+Добавление регулярных рейсов.
+
+<%= form_tag("/timetablesap_flight/form/") do %>
+    <%= label_tag "ID Flight" %>
+    <%= text_field_tag :timetables_id  %>	
+<br />
+<%= label_tag "Дата начала навигации." %>
+<%= select_datetime(Time.now, :prefix => 'StartNavStart') %>
+<%= label_tag "Date start navigation End" %>
+<%= select_datetime(Time.now, :prefix => 'StartNavEnd') %>
+<br />
+<%= label_tag "Date end navigation Start" %>
+<%= select_datetime(Time.now, :prefix => 'EndNavStart')%>
+<%= label_tag "Date end navigation End" %>
+<%= select_datetime(Time.now, :prefix => 'EndNavEnd')%>
+<br />
+<%= label_tag "Monday" %>
+<%= check_box_tag 'Mo' %>
+<br />
+<%= label_tag "Tuesday" %>
+<%= check_box_tag 'Tu' %>
+<br />
+<%= label_tag "Wednesday" %>
+<%= check_box_tag 'We' %>
+<br />
+<%= label_tag "Thursday" %>
+<%= check_box_tag 'Th' %>
+<br />
+<%= label_tag "Friday" %>
+<%= check_box_tag 'Fr' %>
+<br />
+<%= label_tag "Saturday" %>
+<%= check_box_tag 'Sa' %>
+<br />
+<%= label_tag "Sonday" %>
+<%= check_box_tag 'Su' %>
+<br />
+<br />
+    <%= submit_tag "Отправить." %>
+
+<%end%>
