@@ -1,3 +1,26 @@
 %h1 
   =@date
+%table{:border => 3}
+  %thead
+    %tr
+      %th Время
+      %th Рейсы (Занятость пполосы)
+  %tbody
+    -1.step(288,1) do
+      %tr{:bgcolor => @bcolor}
+        %td
+          =@time.strftime("%H:%M")
+        %td
 
+
+-#         -@timetablesap_flights.each do |timetablesap_flight|
+-#            - if timetablesap_flight.start.strftime("%H:%M")==@time.strftime("%H:%M") and timetablesap_flight.start.strftime("%Y-%m-%d").to_s==@date.to_s and timetablesap_flight.runway_start==@runway_ap.id
+-#              -@bcolor = "#1874CD"
+-#              Взлёт #{timetablesap_flight.aircompany.IATA_code}  #{timetablesap_flight.Flight_Number}
+-#            - elsif timetablesap_flight.end.strftime("%H:%M")==@time.strftime("%H:%M") and timetablesap_flight.end.strftime("%Y-%m-%d").to_s==@date.to_s and timetablesap_flight.runway_end==@runway_ap.id
+-#              -@bcolor = "#CD661D"
+-#              Посадка #{timetablesap_flight.aircompany.IATA_code}  #{timetablesap_flight.Flight_Number}
+-#            
+-#            - else
+-#              -@bcolor = "#008B00"
+          -(@time+=5.minute)

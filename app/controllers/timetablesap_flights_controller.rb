@@ -103,16 +103,16 @@ redirect_to (timetablesap_flights_url)
     @timetablesap_flight = TimetablesapFlight.new(:aircompany_id => params[:aircompany_id], :start => s, :end => ends, :Flight_Number => params[:Flight_Number], :way_start => params[:way_start], :way_end => params[:way_end], :TermStart => params[:TermStart], :TermEnd => params[:TermEnd], :GateStart => params[:GateStart], :GateEnd => params[:GateEnd], :TypeOfPlane => params[:TypeOfPlane],:runway_start => params[:runway_start].to_i,:runway_end => params[:runway_end].to_i,:flight_type_id => 1)
 	@timetablesap_flight.save
     end	
-	end
+  end
   if params[:Su] == '1'
   (@startnavstart..@endnavstart).to_a.find_all{|dt| dt.strftime("%a")=="Sun"}.each do |s|
     ends = (s.to_time+(@startnavend.to_time - @startnavstart.to_time)).to_datetime
     @timetablesap_flight = TimetablesapFlight.new(:aircompany_id => params[:aircompany_id], :start => s, :end => ends, :Flight_Number => params[:Flight_Number], :way_start => params[:way_start], :way_end => params[:way_end], :TermStart => params[:TermStart], :TermEnd => params[:TermEnd], :GateStart => params[:GateStart], :GateEnd => params[:GateEnd], :TypeOfPlane => params[:TypeOfPlane],:runway_start => params[:runway_start].to_i,:runway_end => params[:runway_end].to_i,:flight_type_id => 1)
 	@timetablesap_flight.save
+      end
     end
-	end
   end
 
-def some
-end  
+  def some
+  end  
 end
