@@ -57,3 +57,4 @@ gem "table_builder"
 gem "calendar_helper"
 gem "calendar_view"
 gem 'fullcalendar-rails'
+gem "ruby-debug19"
